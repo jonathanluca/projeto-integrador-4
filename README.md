@@ -1,7 +1,5 @@
 ### Projeto Integrador I
 
-# Controle de Qualidade do Ar e Efeito à Saúde
-
 ## Tecnologias utilizadas
 
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
