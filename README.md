@@ -8,7 +8,10 @@
 
 O componente curricular de Projeto Integrador IV, tem o objetivo de unir os conhecimentos dos demais componentes curriculares do semestre, que ensinam algoritmo de programação, tecnologias de TI, fundamentos de sistemas de informação, fundamentos de teoria geral de sistemas e experimentos práticos de banco de dados.
 
+Estamos na fase de escolher qual projeto vamos desenvolver. 
 ### Escolher entre as vertentes:
 - Saúde
 - Agronegócio
 - Sustentabilidade
+
+
