@@ -3,48 +3,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="16dp"
-    android:paddingTop="16dp"
-    android:paddingRight="16dp"
-    android:paddingBottom="16dp"
-    tools:context=".MainActivity">
+    android:background="@android:color/white"
+    android:padding="16dp"
+    tools:context=".MainActivity"
+    tools:ignore="ExtraText">
+
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/logocuida"
+        android:contentDescription="Logo"/>
+
 
     <TextView
         android:id="@+id/tvAppName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:text="CuidaPet"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/tvSubtitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tvAppName"
+        android:layout_below="@id/ivLogo"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
-        android:text="O aplicativo que cuida do seu pet"
-        android:textSize="16sp" />
+        android:text="CuidaPet"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="32dp"/>
+
 
     <Button
         android:id="@+id/btnLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tvSubtitle"
-        android:layout_marginTop="32dp"
+        style="@style/PrimaryButton"
+        android:text="Login"
+        android:layout_below="@id/tvAppName"
         android:layout_centerHorizontal="true"
-        android:text="Login" />
+        android:layout_marginTop="16dp"/>
 
     <Button
         android:id="@+id/btnSignUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/SecondaryButton"
+        android:text="Cadastre-se"
         android:layout_below="@id/btnLogin"
-        android:layout_marginTop="16dp"
         android:layout_centerHorizontal="true"
-        android:text="Cadastre-se" />
+        android:layout_marginTop="16dp"/>
 
 </RelativeLayout>
