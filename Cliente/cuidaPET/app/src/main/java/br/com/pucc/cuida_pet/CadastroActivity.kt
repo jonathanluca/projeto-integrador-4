@@ -6,27 +6,22 @@ import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import br.com.pucc.cuida_pet.databinding.ActivityCadastroBinding
 
 class CadastroActivity : AppCompatActivity() {
-
+    private lateinit var binding:ActivityCadastroBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_cadastro)
+        binding = ActivityCadastroBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val btnCadastrar: Button = findViewById(R.id.btnCadastrar)
-
-        btnCadastrar.setOnClickListener {
-            val nome = findViewById<EditText>(R.id.etNome).text.toString()
-            val email = findViewById<EditText>(R.id.etEmailCadastro).text.toString()
-            val telefone = findViewById<EditText>(R.id.etTelefone).text.toString()
-            val senha = findViewById<EditText>(R.id.etSenha).text.toString()
+        binding.btnCadastrar.setOnClickListener {
+            val nome = binding.etNome.text.toString()
+            val email = binding.etEmailCadastro.text.toString()
+            val telefone = binding.etTelefone.text.toString()
+            val senha = binding.etSenha.text.toString()
 
             val userManager = UserManager(this)
-
-
-            // Se o usuário não estiver logado, faça o cadastro
-            val isVeterinario = findViewById<CheckBox>(R.id.chkVeterinario).isChecked
-            val idClinica = if (isVeterinario) findViewById<EditText>(R.id.etIdClinica).text.toString() else ""
 
             // Crie lógica para lidar com o cadastro e outras ações necessárias
             userManager.registerUser(nome, email, telefone, senha)

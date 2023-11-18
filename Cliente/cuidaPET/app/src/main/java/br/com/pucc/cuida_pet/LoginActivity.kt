@@ -26,10 +26,10 @@ class LoginActivity : AppCompatActivity() {
             val email = etEmail.text.toString()
             val password = etPassword.text.toString()
 
-            if (userManager.loginUser(email, password)) {
+            if (email == "teste@email.com" && password == "teste") {
                 startUserActivity()
             } else {
-                showToast("Login failed. Check your credentials.")
+                showToast("Credenciais incorretas, tente novamente!")
             }
         }
     }
