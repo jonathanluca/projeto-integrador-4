@@ -15,3 +15,12 @@ Estamos na fase de escolher qual projeto vamos desenvolver.
 - Sustentabilidade
 
 
+## Como rodar
+
+1. Instalar o Android Studio
+2. Instalar uma IDE para Java (Eclipse ou Jetbrains)
+3. Clone o repositório (git clone link_do_repo)
+4. Abra a pasta /cuidaPET no Android Studio
+5. Abra o servidor em outra IDE
+6. Rode o servidor primeiro
+7. Rode o app
