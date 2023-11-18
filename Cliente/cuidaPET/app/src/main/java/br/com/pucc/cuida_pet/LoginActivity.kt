@@ -1,21 +1,22 @@
-package br.com.pucc.cuida_pet;
+// LoginActivity.kt
+package br.com.pucc.cuida_pet
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
-import br.com.pucc.cuida_pet.R
-
-
-
-import android.app.Activity
-
+import android.widget.EditText
+import android.widget.Toast
 
 class LoginActivity : AppCompatActivity() {
+
+    private lateinit var userManager: UserManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        userManager = UserManager(this)
 
         val etEmail = findViewById<EditText>(R.id.etEmail)
         val etPassword = findViewById<EditText>(R.id.etPassword)
@@ -25,8 +26,21 @@ class LoginActivity : AppCompatActivity() {
             val email = etEmail.text.toString()
             val password = etPassword.text.toString()
 
-            // Adicione aqui a lógica para verificar o login
-            // Você pode implementar a autenticação, verificar os dados, etc.
+            if (userManager.loginUser(email, password)) {
+                startUserActivity()
+            } else {
+                showToast("Login failed. Check your credentials.")
+            }
         }
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun startUserActivity() {
+        val intent = Intent(this, UserActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }

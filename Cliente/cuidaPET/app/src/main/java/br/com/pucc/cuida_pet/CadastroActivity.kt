@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class CadastroActivity : AppCompatActivity() {
@@ -12,19 +13,31 @@ class CadastroActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cadastro)
 
-        val chkVeterinario = findViewById<CheckBox>(R.id.chkVeterinario)
-        val etIdClinica = findViewById<EditText>(R.id.etIdClinica)
-
-        chkVeterinario.setOnCheckedChangeListener { _, isChecked ->
-            // Exibir/ocultar o campo ID da clínica com base no estado do CheckBox
-            etIdClinica.visibility = if (isChecked) android.view.View.VISIBLE else android.view.View.GONE
-        }
-
-        val btnCadastrar = findViewById<Button>(R.id.btnCadastrar)
+        val btnCadastrar: Button = findViewById(R.id.btnCadastrar)
 
         btnCadastrar.setOnClickListener {
-            // Adicione aqui a lógica para realizar o cadastro
-            // Pode verificar os campos, chamar um serviço de cadastro, etc.
+            val nome = findViewById<EditText>(R.id.etNome).text.toString()
+            val email = findViewById<EditText>(R.id.etEmailCadastro).text.toString()
+            val telefone = findViewById<EditText>(R.id.etTelefone).text.toString()
+            val senha = findViewById<EditText>(R.id.etSenha).text.toString()
+
+            val userManager = UserManager(this)
+
+
+            // Se o usuário não estiver logado, faça o cadastro
+            val isVeterinario = findViewById<CheckBox>(R.id.chkVeterinario).isChecked
+            val idClinica = if (isVeterinario) findViewById<EditText>(R.id.etIdClinica).text.toString() else ""
+
+            // Crie lógica para lidar com o cadastro e outras ações necessárias
+            userManager.registerUser(nome, email, telefone, senha)
+            showToast("Cadastro realizado com sucesso!")
+            finish()  // Fecha a atividade de cadastro após o sucesso
+
         }
+    }
+
+    // Método showToast para exibir mensagens Toast
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }
