@@ -39,7 +39,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun startUserActivity() {
-        val intent = Intent(this, UserActivity::class.java)
+        val intent = Intent(this, PetListActivity::class.java)
         startActivity(intent)
         finish()
     }
