@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:padding="16dp"
+    tools:context=".PetCadastroActivity">
+
+    <EditText
+        android:id="@+id/etNomePet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nome do Animal"
+        android:layout_marginBottom="16dp"/>
+
+    <EditText
+        android:id="@+id/etEspeciePet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Espécie do Animal"
+        android:layout_below="@id/etNomePet"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"/>
+
+    <EditText
+        android:id="@+id/etRacaPet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Raça do Animal"
+        android:layout_below="@id/etEspeciePet"
+        android:layout_marginBottom="16dp"/>
+
+    <EditText
+        android:id="@+id/etDataNascimentoPet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Data de Nascimento"
+        android:layout_below="@id/etRacaPet"
+        android:layout_marginBottom="16dp"/>
+
+    <EditText
+        android:id="@+id/etCorPrimariaPet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Cor Primária do Animal"
+        android:layout_below="@id/etDataNascimentoPet"
+        android:layout_marginBottom="16dp"/>
+
+    <EditText
+        android:id="@+id/etIdVeterinario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="ID do Veterinário"
+        android:layout_below="@id/etCorPrimariaPet"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/btnCadastrarPet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cadastrar Pet"
+        android:background="?attr/colorPrimary"
+        android:textColor="@android:color/white"
+        android:layout_below="@id/etIdVeterinario"
+        android:layout_marginTop="16dp"/>
+
+</RelativeLayout>

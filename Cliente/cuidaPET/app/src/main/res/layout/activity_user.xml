@@ -81,4 +81,13 @@
         android:layout_marginTop="16dp"
         android:layout_width="200dp"/>
 
+    <Button
+        android:id="@+id/btnCadastrarPet"
+        style="@style/RoundedButton"
+        android:text="Cadastrar Pet"
+        android:layout_below="@id/btnViewPets"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:layout_width="200dp"/>
+
 </RelativeLayout>
