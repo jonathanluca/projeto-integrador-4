@@ -9,13 +9,12 @@ data class Pet(
     val cor: String = "",
     val peso: Float = 0.0f,
     val exames: List<Exame>? = null,
-    val idVet: Int = 0,
     val idUser: Int = 0,
     val vacinas: List<Vacina>? = null,
 ) {
     // Construtor secundário com validações
-    constructor(nome: String, especie: String, idade: Int, cor: String, peso: Float, exames: List<Exame>? = null, idVet: Int, idUser: Int, vacinas: List<Vacina>? = null) :
-            this(nome, "", especie, "", idade, cor, peso, exames, idVet, idUser, vacinas) {
+    constructor(nome: String, especie: String, idade: Int, cor: String, peso: Float, exames: List<Exame>? = null, idUser: Int, vacinas: List<Vacina>? = null) :
+            this(nome, "", especie, "", idade, cor, peso, exames, idUser, vacinas) {
 
         val mensagensErro = mutableListOf<String>()
 
@@ -42,11 +41,6 @@ data class Pet(
         // Validando o peso
         if (peso <= 0) {
             mensagensErro.add("O peso deve ser maior que zero.")
-        }
-
-        // Validando o ID do veterinário
-        if (idVet <= 0) {
-            mensagensErro.add("O ID do veterinário deve ser maior que zero.")
         }
 
         // Validando o ID do usuário
