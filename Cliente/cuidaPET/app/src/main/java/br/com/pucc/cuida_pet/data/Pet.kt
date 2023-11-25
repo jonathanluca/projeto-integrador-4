@@ -1,16 +1,16 @@
 package br.com.pucc.cuida_pet.data
 
 data class Pet(
-    val nome: String,
-    val linkFoto: String,
-    val especie: String,
-    val raca: String,
-    val idade: Int,
-    val cor: String,
-    val peso: Float, //Em mg
+    val nome: String = "",
+    val linkFoto: String = "",
+    val especie: String = "",
+    val raca: String = "",
+    val idade: Int = 0,
+    val cor: String = "",
+    val peso: Float = 0.0f,
     val exames: List<Exame>? = null,
-    val idVet: Int,
-    val idUser: Int,
+    val idVet: Int = 0,
+    val idUser: Int = 0,
     val vacinas: List<Vacina>? = null,
 ) {
     // Construtor secundário com validações
