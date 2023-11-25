@@ -33,6 +33,18 @@ public class MySocketClient {
         return listaDePet;
     }
 
+    public boolean updatePet(Pet pet) throws IOException {
+        openConection();
+        ObjectOutputStream envio = new ObjectOutputStream(conexao.getOutputStream());
+        envio.writeObject(pet);
+        envio.flush();
+
+        envio.close();
+        closeConection();
+
+
+        return true;
+    }
     public void deletePet(String nome) throws IOException {
         openConection();
         ObjectOutputStream envio = new ObjectOutputStream(conexao.getOutputStream());
