@@ -62,6 +62,15 @@ data class Pet(
     }
 
     override fun writeToParcel(dest: Parcel, flags: Int) {
-        TODO("Not yet implemented")
+        dest.writeString(nome)
+        dest.writeString(linkFoto)
+        dest.writeString(especie)
+        dest.writeString(raca)
+        dest.writeInt(idade)
+        dest.writeString(cor)
+        dest.writeFloat(peso)
+        dest.writeTypedList(exames)
+        dest.writeInt(idUser)
+        dest.writeTypedList(vacinas)
     }
 }
