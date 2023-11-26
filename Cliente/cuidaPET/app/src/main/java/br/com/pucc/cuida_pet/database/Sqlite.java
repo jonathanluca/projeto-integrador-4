@@ -39,7 +39,7 @@ public class Sqlite extends SQLiteOpenHelper {
             "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
             "pet_id INTEGER, " +
             "nome TEXT NOT NULL, " +
-            "resultado BLOB, " +
+            "resultado TEXT, " +
             "FOREIGN KEY(pet_id) REFERENCES pet(_id)" +
             ");";
 

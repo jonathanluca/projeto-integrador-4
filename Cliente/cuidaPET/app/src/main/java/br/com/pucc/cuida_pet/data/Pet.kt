@@ -1,5 +1,6 @@
 package br.com.pucc.cuida_pet.data
 
+import Exame
 import android.os.Parcel
 import android.os.Parcelable
 
@@ -58,7 +59,7 @@ data class Pet(
     }
 
     override fun describeContents(): Int {
-        TODO("Not yet implemented")
+        return 0
     }
 
     override fun writeToParcel(dest: Parcel, flags: Int) {
