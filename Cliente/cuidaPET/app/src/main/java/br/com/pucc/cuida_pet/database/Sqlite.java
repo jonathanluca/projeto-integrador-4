@@ -6,9 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
-
 import androidx.annotation.Nullable;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,16 +27,20 @@ public class Sqlite extends SQLiteOpenHelper {
 
     private final String createTableVacina = "CREATE TABLE vacina (" +
             "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            "pet_id INTEGER, " +
             "nome TEXT NOT NULL, " +
             "tipo TEXT NOT NULL, " +
             "data TEXT NOT NULL, " +
             "proximaDose TEXT, " +
+            "FOREIGN KEY(pet_id) REFERENCES pet(_id)" +
             ");";
 
     private final String createTableExame = "CREATE TABLE exame (" +
             "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            "pet_id INTEGER, " +
             "nome TEXT NOT NULL, " +
             "resultado BLOB, " +
+            "FOREIGN KEY(pet_id) REFERENCES pet(_id)" +
             ");";
 
 

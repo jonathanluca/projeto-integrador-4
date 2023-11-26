@@ -1,5 +1,8 @@
 package br.com.pucc.cuida_pet.data
 
+import android.os.Parcel
+import android.os.Parcelable
+
 data class Pet(
     val nome: String = "",
     val linkFoto: String = "",
@@ -11,7 +14,7 @@ data class Pet(
     val exames: List<Exame>? = null,
     val idUser: Int = 0,
     val vacinas: List<Vacina>? = null,
-) {
+) : Parcelable {
     // Construtor secundário com validações
     constructor(nome: String, especie: String, idade: Int, cor: String, peso: Float, exames: List<Exame>? = null, idUser: Int, vacinas: List<Vacina>? = null) :
             this(nome, "", especie, "", idade, cor, peso, exames, idUser, vacinas) {
@@ -52,5 +55,13 @@ data class Pet(
         if (mensagensErro.isNotEmpty()) {
             throw IllegalArgumentException(mensagensErro.joinToString("; "))
         }
+    }
+
+    override fun describeContents(): Int {
+        TODO("Not yet implemented")
+    }
+
+    override fun writeToParcel(dest: Parcel, flags: Int) {
+        TODO("Not yet implemented")
     }
 }
