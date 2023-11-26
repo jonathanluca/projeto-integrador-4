@@ -3,6 +3,7 @@ package br.com.pucc.cuida_pet.data
 import Exame
 import android.os.Parcel
 import android.os.Parcelable
+import java.sql.Blob
 
 data class Pet(
     val nome: String = "",
@@ -58,6 +59,10 @@ data class Pet(
         }
     }
 
+    constructor(parcel: Parcel) : this(
+        parcel.readString() ?: "",
+        // Use readParcelable para ler o Blob do Parcel
+    )
     override fun describeContents(): Int {
         return 0
     }
@@ -73,5 +78,14 @@ data class Pet(
         dest.writeTypedList(exames)
         dest.writeInt(idUser)
         dest.writeTypedList(vacinas)
+    }
+    companion object CREATOR : Parcelable.Creator<Pet> {
+        override fun createFromParcel(parcel: Parcel): Pet {
+            return Pet(parcel)
+        }
+
+        override fun newArray(size: Int): Array<Pet?> {
+            return arrayOfNulls(size)
+        }
     }
 }
