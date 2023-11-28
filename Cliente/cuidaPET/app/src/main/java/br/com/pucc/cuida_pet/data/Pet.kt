@@ -6,86 +6,50 @@ import android.os.Parcelable
 import java.sql.Blob
 
 data class Pet(
-    val nome: String = "",
-    val linkFoto: String = "",
-    val especie: String = "",
-    val raca: String = "",
-    val idade: Int = 0,
-    val cor: String = "",
-    val peso: Float = 0.0f,
+    var nome: String? = "",
+    var linkFoto: String? = "",
+    var especie: String? = "",
+    var raca: String? = "",
+    var idade: Int = 0,
+    var cor: String? = "",
+    var peso: Float = 0.0f,
     val exames: List<Exame>? = null,
     val idUser: Int = 0,
     val vacinas: List<Vacina>? = null,
 ) : Parcelable {
-    // Construtor secundário com validações
-    constructor(nome: String, especie: String, idade: Int, cor: String, peso: Float, exames: List<Exame>? = null, idUser: Int, vacinas: List<Vacina>? = null) :
-            this(nome, "", especie, "", idade, cor, peso, exames, idUser, vacinas) {
-
-        val mensagensErro = mutableListOf<String>()
-
-        // Validando o nome
-        if (nome.isBlank()) {
-            mensagensErro.add("O nome não pode estar em branco.")
-        }
-
-        // Validando a idade
-        if (idade < 0) {
-            mensagensErro.add("A idade não pode ser negativa.")
-        }
-
-        // Validando a espécie
-        if (especie.isBlank()) {
-            mensagensErro.add("A espécie não pode estar em branco.")
-        }
-
-        // Validando a cor
-        if (cor.isBlank()) {
-            mensagensErro.add("A cor não pode estar em branco.")
-        }
-
-        // Validando o peso
-        if (peso <= 0) {
-            mensagensErro.add("O peso deve ser maior que zero.")
-        }
-
-        // Validando o ID do usuário
-        if (idUser <= 0) {
-            mensagensErro.add("O ID do usuário deve ser maior que zero.")
-        }
-
-        // Se houver mensagens de erro, lançar exceção
-        if (mensagensErro.isNotEmpty()) {
-            throw IllegalArgumentException(mensagensErro.joinToString("; "))
-        }
-    }
-
-    constructor(parcel: Parcel) : this(
-        parcel.readString() ?: "",
-        // Use readParcelable para ler o Blob do Parcel
+    constructor(source: Parcel) : this(
+        source.readString(),
+        source.readString(),
+        source.readString(),
+        source.readString(),
+        source.readInt(),
+        source.readString(),
+        source.readFloat(),
+        source.createTypedArrayList(Exame.CREATOR),
+        source.readInt(),
+        source.createTypedArrayList(Vacina.CREATOR)
     )
-    override fun describeContents(): Int {
-        return 0
+
+    override fun describeContents() = 0
+
+    override fun writeToParcel(dest: Parcel, flags: Int) = with(dest) {
+        writeString(nome)
+        writeString(linkFoto)
+        writeString(especie)
+        writeString(raca)
+        writeInt(idade)
+        writeString(cor)
+        writeFloat(peso)
+        writeTypedList(exames)
+        writeInt(idUser)
+        writeTypedList(vacinas)
     }
 
-    override fun writeToParcel(dest: Parcel, flags: Int) {
-        dest.writeString(nome)
-        dest.writeString(linkFoto)
-        dest.writeString(especie)
-        dest.writeString(raca)
-        dest.writeInt(idade)
-        dest.writeString(cor)
-        dest.writeFloat(peso)
-        dest.writeTypedList(exames)
-        dest.writeInt(idUser)
-        dest.writeTypedList(vacinas)
-    }
-    companion object CREATOR : Parcelable.Creator<Pet> {
-        override fun createFromParcel(parcel: Parcel): Pet {
-            return Pet(parcel)
-        }
-
-        override fun newArray(size: Int): Array<Pet?> {
-            return arrayOfNulls(size)
+    companion object {
+        @JvmField
+        val CREATOR: Parcelable.Creator<Pet> = object : Parcelable.Creator<Pet> {
+            override fun createFromParcel(source: Parcel): Pet = Pet(source)
+            override fun newArray(size: Int): Array<Pet?> = arrayOfNulls(size)
         }
     }
 }

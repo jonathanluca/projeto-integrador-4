@@ -10,14 +10,18 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Divider
 import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -86,17 +90,20 @@ class PetListActivity : ComponentActivity() {
 @Composable
 fun Fab() {
     val context = LocalContext.current
-    FloatingActionButton(onClick = {
-        val intent = Intent(context, PetFichaActivity::class.java)
-        context.startActivity(intent)
-    }) {
-
+    Row (modifier = Modifier.fillMaxWidth().padding(16.dp), verticalAlignment = Alignment.CenterVertically){
+        FloatingActionButton(onClick = {
+            val intent = Intent(context, PetFichaActivity::class.java)
+            context.startActivity(intent)
+        }) {
+            Icon(Icons.Filled.Add, "Floating action button.")
+        }
     }
 }
 @Composable
 fun TitleArea(userName: String) {
     Text(
         text = "Seja bem vindo $userName",
+        modifier =Modifier.padding(32.dp),
         style = TextStyle(
             fontWeight = FontWeight.Bold,
             fontSize = 32.sp
@@ -142,13 +149,15 @@ fun PetItem(pet: Pet) {
         Spacer(modifier = Modifier.width(16.dp))
 
         Column {
-            Text(
-                text = pet.nome,
-                style = TextStyle(
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 18.sp
+            pet.nome?.let {
+                Text(
+                    text = it,
+                    style = TextStyle(
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 18.sp
+                    )
                 )
-            )
+            }
         }
     }
     Divider()
