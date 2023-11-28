@@ -27,7 +27,6 @@ class PetFichaActivity : ComponentActivity() {
 
         if (pet == null) { //Se não veio o pet, da erro e fecha o app
             Toast.makeText(this, "ERRO INESPERADO", Toast.LENGTH_LONG).show()
-            throw Exception("NENHUM PET VEIO")
         }
 
         setContent {
