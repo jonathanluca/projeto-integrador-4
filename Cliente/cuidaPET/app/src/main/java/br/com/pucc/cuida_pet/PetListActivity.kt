@@ -17,6 +17,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Divider
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -71,11 +72,36 @@ class PetListActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    PetsList(novaListaCliente1)
+                    Column {
+                        TitleArea("jorge")
+                        PetsList(novaListaCliente1)
+                        Fab()
+                    }
                 }
             }
         }
     }
+}
+
+@Composable
+fun Fab() {
+    val context = LocalContext.current
+    FloatingActionButton(onClick = {
+        val intent = Intent(context, PetFichaActivity::class.java)
+        context.startActivity(intent)
+    }) {
+
+    }
+}
+@Composable
+fun TitleArea(userName: String) {
+    Text(
+        text = "Seja bem vindo $userName",
+        style = TextStyle(
+            fontWeight = FontWeight.Bold,
+            fontSize = 32.sp
+        )
+    )
 }
 @Composable
 fun PetsList(petList: List<Pet>?) {
