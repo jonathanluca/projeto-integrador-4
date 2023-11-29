@@ -39,7 +39,7 @@ class ServerThread extends Thread {
 
                 switch (generic.task) {
                     case "listar-pets":
-                        PetActions.listUserPets(donoPet.getIdUser(), output);
+                        PetActions.listUserPets(pet.getIdUser(), output);
                         break;
                     case "criar-pet":
                         PetActions.createPet(pet, output);
@@ -49,6 +49,9 @@ class ServerThread extends Thread {
                         break;
                     case "deletar-pet":
                         PetActions.deletePet(pet, output);
+                        break;
+                    case "verificar-login":
+                        OwnerActions.authValidate(donoPet.getEmail(), donoPet.getSenha(), output);
                         break;
                 }
 

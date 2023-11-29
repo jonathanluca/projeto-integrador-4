@@ -1,14 +1,10 @@
 package Server
 
+import java.time.LocalDate;
 data class DonoPet (
-        var nome: String? = "",
-        var linkFoto: String? = "",
-        var especie: String? = "",
-        var raca: String? = "",
-        var idade: Int = 0,
-        var cor: String? = "",
-        var peso: Float = 0.0f,
-        val exames: List<Exame>? = null,
-        val idUser: Int = 0,
-        val vacinas: List<Vacina>? = null,
+    val nome: String,
+    val email: String,
+    val telefone: String,
+    val dataNascimento: LocalDate,
+    val senha: String
 )
