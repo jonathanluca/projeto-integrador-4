@@ -10,6 +10,6 @@ data class Pet (
         var cor: String? = "",
         var peso: Float = 0.0f,
         val exames: kotlin.collections.List<Exame>? = null,
-        val idUser: Int = 0,
+        var idUser: Int = 0,
         val vacinas: kotlin.collections.List<Vacina>? = null,
 )

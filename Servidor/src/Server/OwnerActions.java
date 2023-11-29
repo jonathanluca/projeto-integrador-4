@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class OwnerActions {
 
-    public static Boolean listPets(String email, String password, ObjectOutputStream output) throws IOException {
+    public static void authValidate(String email, String password, ObjectOutputStream output) throws IOException {
 
         boolean auth = false;
 
@@ -33,6 +33,5 @@ public class OwnerActions {
         }
 
         output.writeBoolean(auth);
-        return auth;
     }
 }
