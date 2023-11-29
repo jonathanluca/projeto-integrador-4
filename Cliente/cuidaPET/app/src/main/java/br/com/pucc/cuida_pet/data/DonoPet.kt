@@ -41,4 +41,8 @@ class DonoPet(
             throw IllegalArgumentException(mensagensErro.joinToString("; "))
         }
     }
+
+    override fun toString(): String {
+        return "DonoPet(nome='$nome', email='$email', telefone='$telefone', dataNascimento=$dataNascimento, senha='$senha')"
+    }
 }

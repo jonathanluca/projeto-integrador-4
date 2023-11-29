@@ -15,6 +15,7 @@ data class Pet(
     var peso: Float = 0.0f,
     val exames: List<Exame>? = null,
     val idUser: Int = 0,
+    // val idPet: Int = 0,
     val vacinas: List<Vacina>? = null,
 ) : Parcelable {
     constructor(source: Parcel) : this(
