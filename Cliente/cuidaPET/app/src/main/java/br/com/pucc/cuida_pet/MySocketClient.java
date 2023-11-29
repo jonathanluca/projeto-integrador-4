@@ -15,7 +15,7 @@ public class MySocketClient {
     }
 
     private void openConection() throws IOException {
-        conexao = new Socket("IP DO PC", 3000); // IP e porta que o programa tá rodando
+        conexao = new Socket("172.16.192.23", 4001); // IP e porta que o programa tá rodando
     }
     private void closeConection() throws IOException {
         conexao.close();
@@ -32,7 +32,7 @@ public class MySocketClient {
         closeConection();
         return listaDePet;
     }
-    public Boolean login(String email, String senha) {
+    public Boolean login(String email, String senha) throws IOException {
         openConection();
         // Enviador
         ObjectOutputStream envio = new ObjectOutputStream(conexao.getOutputStream());
@@ -46,7 +46,7 @@ public class MySocketClient {
         closeConection();
         resposta.close();
 
-        return resposta;
+        return resposta.readBoolean();
 
     }
     public boolean updatePet(Pet pet) throws IOException {

@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Database {
-    private static final String DB_HOST = "LINK DO BANCO";
+    private static final String DB_HOST = "LINK_DO_BANCO";
     private static final String DB_USER = "seu_usuario";
     private static final String DB_PASSWORD = "sua_senha";
 

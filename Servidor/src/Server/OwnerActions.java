@@ -14,23 +14,25 @@ public class OwnerActions {
 
         boolean auth = false;
 
-        try (Connection connection = Database.getConnection()) {
-            String query = "SELECT senha FROM usuarios WHERE email=?";
+//        try (Connection connection = Database.getConnection()) {
+//            String query = "SELECT senha FROM usuarios WHERE email=?";
+//
+//            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+//                preparedStatement.setString(1, email);
+//
+//                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+//                    if (resultSet.next()) {
+//                        String storedPassword = resultSet.getString("senha");
+//
+//                        auth = password.equals(storedPassword);
+//                    }
+//                }
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
 
-            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-                preparedStatement.setString(1, email);
-
-                try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                    if (resultSet.next()) {
-                        String storedPassword = resultSet.getString("senha");
-
-                        auth = password.equals(storedPassword);
-                    }
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        System.out.println(email + " " + password);
 
         output.writeBoolean(auth);
     }

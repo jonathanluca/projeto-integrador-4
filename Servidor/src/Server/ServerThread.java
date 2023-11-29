@@ -29,29 +29,35 @@ class ServerThread extends Thread {
                 DonoPet donoPet = null;
                 Pet pet = null;
 
-                if (generic.objectType.equals("DonoPet")) {
-                    donoPet = (DonoPet) generic.object;
-                } else if (generic.objectType.equals("Pet")) {
-                    pet = (Pet) generic.object;
-                } else {
-                    break;
+                String[] params = input.readUTF().split("|");
+
+                for (int i = 0; i < params.length; i++) {
+                    params[i] = params[i].trim();
                 }
 
-                switch (generic.task) {
-                    case "listar-pets":
-                        PetActions.listUserPets(pet.getIdUser(), output);
-                        break;
-                    case "criar-pet":
-                        PetActions.createPet(pet, output);
-                        break;
-                    case "editar-pet":
-                        PetActions.editPet(pet, output);
-                        break;
-                    case "deletar-pet":
-                        PetActions.deletePet(pet, output);
-                        break;
+//                if (generic.objectType.equals("DonoPet")) {
+//                    donoPet = (DonoPet) generic.object;
+//                } else if (generic.objectType.equals("Pet")) {
+//                    pet = (Pet) generic.object;
+//                } else {
+//                    break;
+//                }
+
+                switch (params[0]) {
+//                    case "listar-pets":
+//                        PetActions.listUserPets(pet.getIdUser(), output);
+//                        break;
+//                    case "criar-pet":
+//                        PetActions.createPet(pet, output);
+//                        break;
+//                    case "editar-pet":
+//                        PetActions.editPet(pet, output);
+//                        break;
+//                    case "deletar-pet":
+//                        PetActions.deletePet(pet, output);
+//                        break;
                     case "verificar-login":
-                        OwnerActions.authValidate(donoPet.getEmail(), donoPet.getSenha(), output);
+                        OwnerActions.authValidate(params[1], params[2], output);
                         break;
                 }
 

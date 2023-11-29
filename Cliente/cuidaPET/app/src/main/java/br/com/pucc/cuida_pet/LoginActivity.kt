@@ -26,7 +26,7 @@ class LoginActivity : AppCompatActivity() {
             val email = etEmail.text.toString()
             val password = etPassword.text.toString()
 
-            if (email == "teste@email.com" && password == "teste") {
+            if (tryLogin(email, password)) {
                 startUserActivity()
             } else {
                 showToast("Credenciais incorretas, tente novamente!")
@@ -34,9 +34,12 @@ class LoginActivity : AppCompatActivity() {
         }
     }
     private fun tryLogin(email: String, senha: String): Boolean{
-        "$"
+       var mySocketClient: MySocketClient = MySocketClient();
 
-        return true
+         if(mySocketClient.login(email, senha)) {
+             return true
+         }
+        return false
     }
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
