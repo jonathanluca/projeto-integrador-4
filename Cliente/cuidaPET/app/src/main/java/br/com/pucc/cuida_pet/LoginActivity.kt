@@ -33,7 +33,11 @@ class LoginActivity : AppCompatActivity() {
             }
         }
     }
+    private fun tryLogin(email: String, senha: String): Boolean{
+        "$"
 
+        return true
+    }
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }

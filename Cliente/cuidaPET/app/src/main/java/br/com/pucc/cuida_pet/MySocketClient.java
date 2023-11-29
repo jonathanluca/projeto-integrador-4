@@ -32,7 +32,23 @@ public class MySocketClient {
         closeConection();
         return listaDePet;
     }
+    public Boolean login(String email, String senha) {
+        openConection();
+        // Enviador
+        ObjectOutputStream envio = new ObjectOutputStream(conexao.getOutputStream());
+        envio.writeBytes("verificar-login | " + email + " | " + senha);
+        envio.flush();
+        
+        // Recebedor
+        ObjectInputStream resposta = new ObjectInputStream(conexao.getInputStream());
 
+        envio.close();
+        closeConection();
+        resposta.close();
+
+        return resposta;
+
+    }
     public boolean updatePet(Pet pet) throws IOException {
         openConection();
         ObjectOutputStream envio = new ObjectOutputStream(conexao.getOutputStream());
