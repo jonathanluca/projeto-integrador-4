@@ -1,6 +1,7 @@
 // LoginActivity.kt
 package br.com.pucc.cuida_pet
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -23,10 +24,7 @@ class LoginActivity : AppCompatActivity() {
         val btnLoginConfirm = findViewById<Button>(R.id.btnLoginConfirm)
 
         btnLoginConfirm.setOnClickListener {
-            val email = etEmail.text.toString()
-            val password = etPassword.text.toString()
-
-            if (tryLogin(email, password)) {
+            if (tryLogin(etEmail.text.toString(), etPassword.text.toString())) {
                 startUserActivity()
             } else {
                 showToast("Credenciais incorretas, tente novamente!")
@@ -34,9 +32,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
     private fun tryLogin(email: String, senha: String): Boolean{
-       var mySocketClient: MySocketClient = MySocketClient();
-
-         if(mySocketClient.login(email, senha)) {
+         if(MySocketClient().login(email, senha)) {
              return true
          }
         return false

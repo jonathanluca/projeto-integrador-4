@@ -11,9 +11,6 @@ import br.com.pucc.cuida_pet.data.Pet;
 public class MySocketClient {
     Socket conexao;
 
-    public MySocketClient() throws IOException {
-    }
-
     private void openConection() throws IOException {
         conexao = new Socket("172.16.192.23", 4001); // IP e porta que o programa tá rodando
     }
