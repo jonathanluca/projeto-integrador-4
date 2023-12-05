@@ -41,7 +41,7 @@ import coil.compose.AsyncImage
 val cliente1: List<Pet>? = null
 
 val petTeste= Pet(
-    "Cliente1",
+    "Faisca",
     "https://love.doghero.com.br/wp-content/uploads/2018/12/golden-retriever-1.png",
     "Especie1",
     "Raca1",
@@ -54,7 +54,7 @@ val petTeste= Pet(
 )
 val petTeste2 = Pet(
     "Melo",
-    "https://www.florence.edu.br/wp-content/uploads/2022/08/Imagem-Materia_Dia-do-Cachorro.png",
+    "https://love.doghero.com.br/wp-content/uploads/2018/12/golden-retriever-1.png",
     "Canine",
     "SRD - Caramelo",
     2,
@@ -77,7 +77,7 @@ class PetListActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     Column {
-                        TitleArea("jorge")
+                        TitleArea("Rafael")
                         PetsList(novaListaCliente1)
                         Fab()
                     }
