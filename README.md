@@ -10,7 +10,7 @@ O componente curricular de Projeto Integrador IV, tem o objetivo de unir os conh
 
 Estamos na fase de escolher qual projeto vamos desenvolver. 
 ### Escolher entre as vertentes:
-- Saúde
+- **Saúde**
 - Agronegócio
 - Sustentabilidade
 
@@ -18,11 +18,9 @@ Estamos na fase de escolher qual projeto vamos desenvolver.
 ## Como rodar
 
 1. Instalar o [Android Studio](https://developer.android.com/studio?hl=pt-br)
-2. Instalar uma IDE para Java (Eclipse ou Jetbrains)
+2. Instalar uma IDE para Java (Eclipse ou InteliJ)
 3. Clone o repositório (git clone link_do_repo)
-   
-5. Abra a pasta /cuidaPET no Android Studio
-(https://developer.android.com/studio?hl=pt-br)5. Abra o servidor em outra IDE
-6. Rode o servidor primeiro
-7. Rode o app
-   
+4. Abra a pasta /cuidaPET no [Android studio](https://developer.android.com/studio?hl=pt-br)
+5. Abra o servidor em outra IDE
+7. Rode o servidor
+8. Rode o app
