@@ -26,7 +26,7 @@ class LoginActivity : AppCompatActivity() {
             val email = etEmail.text.toString()
             val password = etPassword.text.toString()
 
-            if (email == "rafael@email.com" && password == "teste") {
+            if (userManager.loginUser(email, password)) {
                 startUserActivity()
             } else {
                 showToast("Credenciais incorretas, tente novamente!")

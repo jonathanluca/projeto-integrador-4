@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,78 +7,61 @@
     android:padding="16dp"
     tools:context=".CadastroActivity">
 
-    <!-- Adicione outros campos conforme necessário -->
-
     <EditText
         android:id="@+id/etNome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:height="48dp"
         android:hint="Nome"
-        app:layout_constraintBottom_toTopOf="@+id/etEmailCadastro"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginBottom="16dp"/>
 
     <EditText
         android:id="@+id/etEmailCadastro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:height="48dp"
         android:hint="Email"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/etTelefone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginBottom="16dp"/>
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Senha"
+        android:inputType="textEmailAddress"
+        android:layout_marginBottom="16dp"/>
 
     <EditText
         android:id="@+id/etTelefone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:height="48dp"
         android:hint="Telefone"
         android:inputType="phone"
-        app:layout_constraintBottom_toTopOf="@+id/etDataNascimento"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginBottom="16dp"/>
 
-    <!-- Novo campo para Data de Nascimento -->
-    <EditText
-        android:id="@+id/etDataNascimento"
-        android:layout_width="match_parent"
+    <!-- Adicione outros campos conforme necessário -->
+
+    <CheckBox
+        android:id="@+id/chkVeterinario"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:height="48dp"
-        android:hint="Data de Nascimento (YYYY-MM-DD)"
-        android:inputType="date"
-        app:layout_constraintBottom_toTopOf="@+id/etSenha"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:text="É Veterinário"
+        android:layout_marginBottom="16dp"/>
 
     <EditText
-        android:id="@+id/etSenha"
+        android:id="@+id/etIdClinica"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="ID da Clínica"
         android:layout_marginBottom="16dp"
-        android:height="48dp"
-        android:hint="Senha"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/btnCadastrar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:visibility="gone"
+        android:layout="@layout/edit_text_style"/>
 
     <Button
         android:id="@+id/btnCadastrar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="156dp"
-        android:background="?attr/colorPrimary"
         android:text="Cadastrar"
-        android:textColor="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:background="?attr/colorPrimary"
+        android:textColor="@android:color/white"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

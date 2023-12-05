@@ -1,51 +1,56 @@
+// CadastroActivity.kt
+
 package br.com.pucc.cuida_pet
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import br.com.pucc.cuida_pet.data.DonoPet
-import br.com.pucc.cuida_pet.databinding.ActivityCadastroBinding
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
+import android.view.View
+
+
 
 class CadastroActivity : AppCompatActivity() {
-    private lateinit var binding:ActivityCadastroBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityCadastroBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_cadastro)
 
-        binding.btnCadastrar.setOnClickListener {
-            val nome = binding.etNome.text.toString()
-            val email = binding.etEmailCadastro.text.toString()
-            val telefone = binding.etTelefone.text.toString()
-            val dataNascimentoStr = binding.etDataNascimento.text.toString()
+        val btnCreateAccount: Button = findViewById(R.id.btnCadastrar)
+        val chkVeterinario: CheckBox = findViewById(R.id.chkVeterinario)
+        val etIdClinica: EditText = findViewById(R.id.etIdClinica)
 
-            try {
-                val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
-                val dataNascimento = LocalDate.parse(dataNascimentoStr, formatter)
-                val senha = binding.etSenha.text.toString()
-
-                val donoPet = DonoPet(nome, email, telefone, dataNascimento, senha)
-
-                // Adicione o Logcat para exibir as informações do objeto
-                Log.d("CadastroActivity", "DonoPet criado: $donoPet")
-
-                showToast("Cadastro realizado com sucesso!")
-                finish()
-
-            } catch (e: IllegalArgumentException) {
-                showToast(e.message ?: "Erro no cadastro.")
+        chkVeterinario.setOnCheckedChangeListener { _, isChecked ->
+            etIdClinica.visibility = if (isChecked) {
+                // Se o usuário for veterinário, tornar o campo ID da clínica visível
+                View.VISIBLE
+            } else {
+                // Se o usuário não for veterinário, ocultar o campo ID da clínica
+                View.GONE
             }
         }
-    }
 
-    // Método showToast para exibir mensagens Toast
-    private fun showToast(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        btnCreateAccount.setOnClickListener {
+            val username = findViewById<EditText>(R.id.etNome).text.toString()
+            val email = findViewById<EditText>(R.id.etEmailCadastro).text.toString()
+            val phone = findViewById<EditText>(R.id.etTelefone).text.toString()
+            val password = findViewById<EditText>(R.id.etPassword).text.toString()
+
+            val userManager = UserManager(this)
+            userManager.registerUser(username, email, phone, password)
+
+            if (chkVeterinario.isChecked) {
+                // Se o usuário for veterinário, você pode acessar o ID da clínica
+                val idClinica = etIdClinica.text.toString()
+                // Faça o que for necessário com o ID da clínica
+            }
+
+            val resultIntent = Intent()
+            setResult(Activity.RESULT_OK, resultIntent)
+            finish()
+        }
     }
 }

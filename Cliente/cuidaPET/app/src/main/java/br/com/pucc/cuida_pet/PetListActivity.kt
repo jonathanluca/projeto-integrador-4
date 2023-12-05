@@ -77,7 +77,7 @@ class PetListActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     Column {
-                        TitleArea("Rafael")
+                        TitleArea("")
                         PetsList(novaListaCliente1)
                         Fab()
                     }
