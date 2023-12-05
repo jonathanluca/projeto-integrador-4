@@ -64,28 +64,33 @@ val petTeste2 = Pet(
     1,
     null)
 class PetListActivity : ComponentActivity() {
+
+    private lateinit var petManager: PetManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val novaListaCliente1 = cliente1.orEmpty().toMutableList() // Converte para MutableList
-        novaListaCliente1.add(petTeste)
-        novaListaCliente1.add(petTeste2)
+
+        petManager = PetManager(this)
+        val petList = petManager.getPets().toMutableList()
         setContent {
             CuidapetTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
                     Column {
                         TitleArea("")
-                        PetsList(novaListaCliente1)
+                        PetsList(petList)
                         Fab()
                     }
                 }
             }
         }
     }
+
+    // Restante do código...
 }
+
 
 @Composable
 fun Fab() {

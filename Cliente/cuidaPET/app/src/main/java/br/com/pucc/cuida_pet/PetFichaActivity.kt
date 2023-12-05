@@ -18,6 +18,9 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -29,29 +32,22 @@ import br.com.pucc.cuida_pet.data.Pet
 import br.com.pucc.cuida_pet.ui.theme.CuidapetTheme
 
 class PetFichaActivity : ComponentActivity() {
-    private var pet: Pet = Pet(
-        "",
-        "",
-        "",
-        "",
-        0,
-        "",
-        0.0f,
-        null,
-        0,
-        null
-    )
+
+    private lateinit var petManager: PetManager
+    var pet: Pet by mutableStateOf(Pet ("", "", "", "", 0, "", 0.0f, null, 0, null))
+
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Obtenha o objeto Pet da Intent
+
+        petManager = PetManager(this)
+
         if (intent.getParcelableExtra("pet", Pet::class.java) != null) {
-            // Coloca no objeto pet pra editar
             pet = intent.getParcelableExtra("pet", Pet::class.java)!!
         }
+
         setContent {
             CuidapetTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
@@ -61,6 +57,20 @@ class PetFichaActivity : ComponentActivity() {
             }
         }
     }
+
+    private fun onSubmit(pet: Pet) {
+        val petList = petManager.getPets().toMutableList()
+
+        // Verifica se o pet já existe na lista (edição) e remove a instância anterior
+        petList.removeAll { it.nome == pet.nome }
+
+        petList.add(pet)
+        petManager.savePets(petList)
+
+        // Restante do código...
+    }
+
+    // Restante do código...
 }
 
 fun onSubmit(pet: Pet) {
@@ -96,15 +106,18 @@ fun PetForm(pet: Pet) {
             )
         }
 
-        pet.nome?.let {
+        pet.nome?.let { text ->
             TextField(
-                value = it,
-                onValueChange = { pet.nome = it },
+                value = pet.nome!!,
+                onValueChange = { pet.nome = text },
                 label = { Text("Nome") },
                 maxLines = 1,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(bottom = 8.dp)
+                    .padding(bottom = 8.dp),
+                keyboardOptions = KeyboardOptions.Default.copy(
+                    keyboardType = KeyboardType.Text // Usar KeyboardType.Text para aceitar caracteres
+                )
             )
         }
 
